@@ -14,7 +14,7 @@ export const hashPassword = async (password: string): Promise<string> => {
 };
 
 export const createJWT = ({ id, email, username, role }: User) => {
-  const token = jwt.sign(
+  return jwt.sign(
     {
       id,
       username,
@@ -23,6 +23,4 @@ export const createJWT = ({ id, email, username, role }: User) => {
     },
     process.env.JWT_SECRET as string,
   );
-
-  return token;
 };

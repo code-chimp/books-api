@@ -1,6 +1,7 @@
 # Books API Example
 
-Inspired by [Scott Moss' API course](https://frontendmasters.com/courses/api-design-nodejs-v4/)
+Inspired by [Scott Moss' API course](https://frontendmasters.com/courses/api-design-nodejs-v4/) thought
+I would take a stab at testing out how I would architect an API using NodeJS, Express, and Prisma.
 
 ## Develop the easy way
 
