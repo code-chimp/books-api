@@ -1,0 +1,76 @@
+### Create user (admin)
+POST {{host}}/users
+Content-Type: application/json
+
+{
+  "username": "grand-poobah",
+  "email": "fredf@waterbuffalos.com",
+  "password": "p@ssw0rd"
+}
+
+### Create user (standard)
+POST {{host}}/users
+Content-Type: application/json
+
+{
+  "username": "hodor",
+  "email": "walter@hodor.com",
+  "password": "S33kr1t"
+}
+
+### Login admin
+POST {{host}}/users/login
+Content-Type: application/json
+
+{
+  "user": "grand-poobah",
+  "password": "p@ssw0rd"
+}
+
+> {% client.global.set("auth_token", response.body.token); %}
+
+### Activate user
+PUT {{host}}/users/f80d0a64-58bc-40b6-93fd-bf0f490d7987/activate
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+### Delete (deactivate) user
+DELETE {{host}}/users/db2f245f-90f0-4b05-a64f-fc1d7d72c22b
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+### All publishers
+GET {{host}}/api/publishers
+Accept: application/json
+
+### Get publisher
+GET {{host}}/api/publishers/c23a4b37-f944-4655-af5f-5549d46211ad
+Accept: application/json
+
+### Create publisher
+POST {{host}}/api/publishers
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "name": "note stuff app"
+}
+
+### Update publisher
+PUT {{host}}/api/publishers/51908aa9-bfba-4bdc-a52a-82a86269b589
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "name": "Note Stuff App"
+}
+
+### Delete publisher
+DELETE {{host}}/api/publishers/c23a4b37-f944-4655-af5f-5549d46211ad
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+### All books
+GET {{host}}/api/books
+Authorization: Bearer {{auth_token}}
+Accept: application/json
