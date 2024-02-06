@@ -3,7 +3,7 @@ import { User } from '@prisma/client';
 import prisma from '../../db';
 import { comparePasswords, createJWT, hashPassword } from '../../modules/auth';
 
-export const getAll = async (req: any, res: Response): Promise<void> => {
+export const getAll = async (req: any, res: Response) => {
   const users = await prisma.user.findMany({
     where: {
       active: true,
@@ -20,7 +20,7 @@ export const getAll = async (req: any, res: Response): Promise<void> => {
   res.status(200).json(users);
 };
 
-export const get = async (req, res) => {
+export const getOne = async (req, res) => {
   const user = await prisma.user.findUnique({
     where: {
       id: req.params.id,
@@ -39,7 +39,7 @@ export const get = async (req, res) => {
   res.status(200).json({ data: user });
 };
 
-export const create = async (req, res, next) => {
+export const createEntity = async (req, res, next) => {
   try {
     const user = await prisma.user.create({
       data: {
@@ -89,7 +89,7 @@ export const login = async (req, res) => {
   res.status(200).json({ token });
 };
 
-export const remove = async (req, res) => {
+export const removeEntity = async (req, res) => {
   const user = await prisma.user.update({
     where: {
       id: req.params.id,

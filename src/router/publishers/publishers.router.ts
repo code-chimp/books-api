@@ -1,13 +1,19 @@
 import { Router } from 'express';
-import { notImplementedHandler } from '../../modules/helpers';
+import {
+  createEntity,
+  getOne,
+  getAll,
+  removeEntity,
+  updateEntity,
+} from './publishers.controller';
 
 const publishers = Router();
 
 publishers
-  .get('/', notImplementedHandler)
-  .get('/:id', notImplementedHandler)
-  .post('/', notImplementedHandler)
-  .put('/:id', notImplementedHandler)
-  .delete('/:id', notImplementedHandler);
+  .get('/', getAll)
+  .get('/:id', getOne)
+  .post('/', createEntity)
+  .put('/:id', updateEntity)
+  .delete('/:id', removeEntity);
 
 export default publishers;
